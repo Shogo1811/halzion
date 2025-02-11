@@ -1,0 +1,54 @@
+PostgreSQLの基礎 (基本SQL文、テーブル作成、CRUD操作)
+
+起動コマンド
+docker-compose up -d
+
+起動確認
+docker ps
+
+起動してるコンテナに入るコマンド
+docker exec -it postgres-container psql -U sample_user -d sample_db
+
+データベース一覧
+\l
+
+テーブル作成
+
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+上記でエラーになる場合
+CREATE TABLE users (id SERIAL PRIMARY KEY, name VARCHAR(50) NOT NULL, email VARCHAR(100) UNIQUE NOT NULL, created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP);
+
+
+
+テーブル確認
+\dt
+
+8-1-1 PosgreSQLの基礎テーブル作成 .mov
+
+
+データの追加、更新、削除
+
+INSERT INTO users (name, email) VALUES ('Taro Yamada', 'taro@example.com');
+INSERT INTO users (name, email) VALUES ('Hanako Sato', 'hanako@example.com');
+
+SELECT * FROM users;
+
+UPDATE users SET email = 'taro_new@example.com' WHERE name = 'Taro Yamada';
+
+DELETE FROM users WHERE name = 'Hanako Sato';
+
+
+テーブル削除
+DROP TABLE users;
+
+Postgreから抜けるコマンド
+\q
+
+コンテナの停止
+docker-compose down

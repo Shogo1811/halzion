@@ -1,0 +1,18 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15  # 使用するPostgreSQLのバージョンを指定
+    container_name: postgres-container
+    environment:
+      POSTGRES_USER: sample_user       # ユーザー名
+      POSTGRES_PASSWORD: sample_pass   # パスワード
+      POSTGRES_DB: sample_db           # 初期データベース名
+    ports:
+      - "5432:5432"  # ホストのポート:コンテナのポート
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # データ永続化用のボリューム
+    restart: always  # コンテナが停止した場合に自動再起動
+
+volumes:
+  postgres_data:

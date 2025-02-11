@@ -1,0 +1,8 @@
+コンテナに入る
+docker exec -it postgres-container psql -U sample_user -d sample_db
+
+※コマンド説明
+docker exec -it postgres-container psql -U {ログインユーザ} -d {sample_db}
+
+\l -- データベース一覧を表示
+\q -- 終了
