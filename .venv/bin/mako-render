@@ -1,0 +1,8 @@
+#!/Users/shogonakagawa/Public/20_work/90_python_lesson/20250128_Python教材リニューアル/halzion/.venv/bin/python
+# -*- coding: utf-8 -*-
+import re
+import sys
+from mako.cmd import cmdline
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(cmdline())
